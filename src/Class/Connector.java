@@ -58,6 +58,7 @@ public class Connector {
     }
 
     private void setConnection(){
+
         connection = null;
 
         try {

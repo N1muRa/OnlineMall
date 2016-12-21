@@ -240,7 +240,7 @@
 							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Vanilla</label>
 						</div>
 						<div class="col col-4">
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Chocolate</label>
+							<label class="checkbox"><input style="background: url('images/tick1.png')" type="checkbox" name="checkbox"><i></i>Chocolate</label>
 							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Butterscotch</label>
 							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Strawberry</label>
 							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Black Forest</label>
