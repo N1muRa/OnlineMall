@@ -1,8 +1,6 @@
-<%@ page import="Class.AccountBean" %>
 <%@ page import="Class.Commodity" %>
-<%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.util.Vector" %>
-<%@ page import="com.sun.org.apache.xpath.internal.functions.FuncFloor" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: №zero
   Date: 2016/12/18
@@ -189,24 +187,18 @@
 						<!--//script -->
 					</div>
 				</section>
-				<section  class="sky-form">
+				<section>
 					<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>DISCOUNTS</h4>
 					<div class="row row1 scroll-pane">
 						<div class="col col-4">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Upto - 10% (20)</label>
-						</div>
-						<div class="col col-4">
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>70% - 60% (5)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>50% - 40% (7)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (2)</label>
+							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>70% - 60% (5)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>50% - 40% (7)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (2)</label><br>
 							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>10% - 5% (5)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (7)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>10% - 5% (2)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Other(50)</label>
 						</div>
 					</div>
 				</section>
-				<section  class="sky-form">
+				<section>
 					<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Price</h4>
 					<ul class="dropdown-menu1">
 						<li><a href="">
@@ -233,45 +225,36 @@
 						});//]]>
 					</script>
 				<!---->
-				<section  class="sky-form">
+				<section>
 					<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>By Flavour</h4>
 					<div class="row row1 scroll-pane">
 						<div class="col col-4">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Vanilla</label>
-						</div>
-						<div class="col col-4">
-							<label class="checkbox"><input style="background: url('images/tick1.png')" type="checkbox" name="checkbox"><i></i>Chocolate</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Butterscotch</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Strawberry</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Black Forest</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Mixed Fruit</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Honey</label>
+							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>70% - 60% (5)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>50% - 40% (7)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (2)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>10% - 5% (5)</label>
 						</div>
 					</div>
 				</section>
-				<section  class="sky-form">
+				<section>
 					<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Weight</h4>
 					<div class="row row1 scroll-pane">
 						<div class="col col-4">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Half KG</label>
-						</div>
-						<div class="col col-4">
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>One KG</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>TwO KG</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>More</label>
+							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>70% - 60% (5)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>50% - 40% (7)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (2)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>10% - 5% (5)</label>
 						</div>
 					</div>
 				</section>
-				<section  class="sky-form">
+				<section>
 					<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Color</h4>
 					<div class="row row1 scroll-pane">
 						<div class="col col-4">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>White</label>
-						</div>
-						<div class="col col-4">
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Pink</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Gold</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Silver</label>
+							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>70% - 60% (5)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>50% - 40% (7)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (2)</label><br>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>10% - 5% (5)</label>
 						</div>
 					</div>
 				</section>

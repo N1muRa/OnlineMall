@@ -1,8 +1,5 @@
-<%@ page import="Class.AccountBean" %>
 <%@ page import="Class.Commodity" %>
-<%@ page import="java.io.PrintWriter" %>
-<%@ page import="java.io.*"%>
-<%@ page import="java.util.Vector" %><%--
+<%@ page import="java.io.*"%><%--
   Created by IntelliJ IDEA.
   User: №zero
   Date: 2016/12/18

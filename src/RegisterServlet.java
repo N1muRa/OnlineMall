@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
 
             String sql = "INSERT INTO user(U_Name, U_Pwd, U_Email) VALUES('" + accountBean.getUsername() + "', '"+ accountBean.getPassword() +"', '"+ accountBean.getEmail() +"')hhh";
 
-            System.out.println("sql:"+sql);
+            //System.out.println("sql:"+sql);
 
             int res = statement.executeUpdate(sql);
 

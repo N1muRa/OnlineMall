@@ -1,5 +1,4 @@
-<%@ page import="Class.AccountBean" %>
-<%@ page import="java.io.PrintWriter" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: №zero
   Date: 2016/12/18
