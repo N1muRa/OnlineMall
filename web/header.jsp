@@ -213,7 +213,7 @@
 										}else {
 									%>
 									<label for="email">Welcome:</label>
-									<%=account.getUsername()%>
+									<a href="personalInfo.jsp"><%=account.getUsername()%></a>
 									<%
 										}
 									%>
