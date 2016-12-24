@@ -1,3 +1,4 @@
+<%@ page import="Class.SendMessage" %>
 <%--
   Created by IntelliJ IDEA.
   User: №zero
@@ -32,15 +33,9 @@
 	<!--//header-->
 	<script type="text/javascript">
 
-        function isEmail(str){
-            var szReg=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-            var bChk=szReg.test(str);
-            return bChk;
-        }
-
 		function validate_user_info(myForm) {
 
-			var email = document.userForm.email.value;
+			var phone = document.userForm.phone.value;
 			var pwd = myForm.password.value;
 
 			if (myForm.firstName.value == ""){
@@ -49,12 +44,8 @@
 			}else if (myForm.lastName.value == ""){
 				alert("Please input your last name!");
 				return false;
-			}else if(email == ""){
+			}else if(phone == ""){
 				alert("Please input your Email Address!");
-				return false;
-			}
-			else if(!isEmail(email)){
-				alert("Please input a valid Email Address!");
 				return false;
 			}
 			else if (myForm.password.value == ""){
@@ -103,12 +94,12 @@
 							<input type="text" name="lastName" value="">
 						</div>
 						<div class="input">
-							<span>Email Address<label>*</label></span>
-							<input type="text" name="email" value="">
+							<span>Phone Number<label>*</label></span>
+							<input type="text" name="phone" value="">
 						</div>
 						<div>
-							<span>Check Email<label>*</label></span>
-							<input type="text" style="width:425px;margin-right:100px;"><input type="button" onclick="submitFunc('')" value="Send" style="font-size: 1.0em;color: #5D4B33;font-weight: 700;padding: 0.5em 3em;border: 7px solid #5D4B33;">
+							<span>Verification Code<label>*</label></span>
+							<input name="code" type="text" style="width:425px;margin-right:100px;"><input type="button" onclick="<%=SendMessage.Send()%>" value="Send" style="font-size: 1.0em;color: #5D4B33;font-weight: 700;padding: 0.5em 3em;border: 7px solid #5D4B33;">
 						</div>
 						<a class="news-letter" href="#">
 							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>

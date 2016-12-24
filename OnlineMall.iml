@@ -22,5 +22,8 @@
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.70" level="application_server_libraries" />
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.40-bin" level="project" />
+    <orderEntry type="library" name="commons-codec-1.4" level="project" />
+    <orderEntry type="library" name="commons-httpclient-3.1" level="project" />
+    <orderEntry type="library" name="commons-logging-1.1.1" level="project" />
   </component>
 </module>
