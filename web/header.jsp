@@ -32,32 +32,32 @@
 									<div class="col-sm-3">
 										<h4>By Brand</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?brand=nike">NIKE</a></li>
-											<li><a class="list" href="_products.jsp?brand=adidas">ADIDAS</a></li>
-											<li><a class="list" href="_products.jsp?brand=ua">UNDER ARMOUR</a></li>
-											<li><a class="list" href="_products.jsp?brand=aj">AIR JORDAN</a></li>
-											<li><a class="list" href="_products.jsp?brand=vans">VANS</a></li>
-											<li><a class="list" href="_products.jsp?brand=converse">CONVERSE</a></li>
+											<li><a class="list" href="_products.jsp?brand=nike&fun=Basketball">NIKE</a></li>
+											<li><a class="list" href="_products.jsp?brand=adidas&fun=Basketball">ADIDAS</a></li>
+											<li><a class="list" href="_products.jsp?brand=ua&fun=Basketball">UNDER ARMOUR</a></li>
+											<li><a class="list" href="_products.jsp?brand=aj&fun=Basketball">AIR JORDAN</a></li>
+											<li><a class="list" href="_products.jsp?brand=vans&fun=Basketball">VANS</a></li>
+											<li><a class="list" href="_products.jsp?brand=converse&fun=Basketball">CONVERSE</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<h4>By Function</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?function=high">High</a></li>
-											<li><a class="list" href="_products.jsp?function=middle">Middle</a></li>
-											<li><a class="list" href="_products.jsp?function=low">Low</a></li>
-											<li><a class="list" href="_products.jsp?function=elite">Elite</a></li>
+											<li><a class="list" href="_products.jsp?function=high&fun=Basketball">High</a></li>
+											<li><a class="list" href="_products.jsp?function=middle&fun=Basketball">Middle</a></li>
+											<li><a class="list" href="_products.jsp?function=low&fun=Basketball">Low</a></li>
+											<li><a class="list" href="_products.jsp?function=elite&fun=Basketball">Elite</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<h4>By Size</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?size=40">≤40</a></li>
-											<li><a class="list" href="_products.jsp?size=41">41</a></li>
-											<li><a class="list" href="_products.jsp?size=42">42</a></li>
-											<li><a class="list" href="_products.jsp?size=42.5">42.5</a></li>
-											<li><a class="list" href="_products.jsp?size=43">43</a></li>
-											<li><a class="list" href="_products.jsp?size=44">≥44</a></li>
+											<li><a class="list" href="_products.jsp?size=40&fun=Basketball">≤40</a></li>
+											<li><a class="list" href="_products.jsp?size=41&fun=Basketball">41</a></li>
+											<li><a class="list" href="_products.jsp?size=42&fun=Basketball">42</a></li>
+											<li><a class="list" href="_products.jsp?size=42.5&fun=Basketball">42.5</a></li>
+											<li><a class="list" href="_products.jsp?size=43&fun=Basketball">43</a></li>
+											<li><a class="list" href="_products.jsp?size=44&fun=Basketball">≥44</a></li>
 										</ul>
 									</div>
 								</div>
@@ -70,32 +70,32 @@
 									<div class="col-sm-3">
 										<h4>By Brand</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?brand=nike">NIKE</a></li>
-											<li><a class="list" href="_products.jsp?brand=adidas">ADIDAS</a></li>
-											<li><a class="list" href="_products.jsp?brand=ua">UNDER ARMOUR</a></li>
-											<li><a class="list" href="_products.jsp?brand=aj">AIR JORDAN</a></li>
-											<li><a class="list" href="_products.jsp?brand=vans">VANS</a></li>
-											<li><a class="list" href="_products.jsp?brand=converse">CONVERSE</a></li>
+											<li><a class="list" href="_products.jsp?brand=nike&fun=Football">NIKE</a></li>
+											<li><a class="list" href="_products.jsp?brand=adidas&fun=Football">ADIDAS</a></li>
+											<li><a class="list" href="_products.jsp?brand=ua&fun=Football">UNDER ARMOUR</a></li>
+											<li><a class="list" href="_products.jsp?brand=aj&fun=Football">AIR JORDAN</a></li>
+											<li><a class="list" href="_products.jsp?brand=vans&fun=Football">VANS</a></li>
+											<li><a class="list" href="_products.jsp?brand=converse&fun=Football">CONVERSE</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<h4>By Function</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?function=high">High</a></li>
-											<li><a class="list" href="_products.jsp?function=middle">Middle</a></li>
-											<li><a class="list" href="_products.jsp?function=low">Low</a></li>
-											<li><a class="list" href="_products.jsp?function=elite">Elite</a></li>
+											<li><a class="list" href="_products.jsp?function=high&fun=Football">High</a></li>
+											<li><a class="list" href="_products.jsp?function=middle&fun=Football">Middle</a></li>
+											<li><a class="list" href="_products.jsp?function=low&fun=Football">Low</a></li>
+											<li><a class="list" href="_products.jsp?function=elite&fun=Football">Elite</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<h4>By Size</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?size=40">≤40</a></li>
-											<li><a class="list" href="_products.jsp?size=41">41</a></li>
-											<li><a class="list" href="_products.jsp?size=42">42</a></li>
-											<li><a class="list" href="_products.jsp?size=42.5">42.5</a></li>
-											<li><a class="list" href="_products.jsp?size=43">43</a></li>
-											<li><a class="list" href="_products.jsp?size=44">≥44</a></li>
+											<li><a class="list" href="_products.jsp?size=40&fun=Football">≤40</a></li>
+											<li><a class="list" href="_products.jsp?size=41&fun=Football">41</a></li>
+											<li><a class="list" href="_products.jsp?size=42&fun=Football">42</a></li>
+											<li><a class="list" href="_products.jsp?size=42.5&fun=Football">42.5</a></li>
+											<li><a class="list" href="_products.jsp?size=43&fun=Football">43</a></li>
+											<li><a class="list" href="_products.jsp?size=44&fun=Football">≥44</a></li>
 										</ul>
 									</div>
 								</div>
@@ -108,32 +108,32 @@
 									<div class="col-sm-3">
 										<h4>By Brand</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?brand=nike">NIKE</a></li>
-											<li><a class="list" href="_products.jsp?brand=adidas">ADIDAS</a></li>
-											<li><a class="list" href="_products.jsp?brand=ua">UNDER ARMOUR</a></li>
-											<li><a class="list" href="_products.jsp?brand=aj">AIR JORDAN</a></li>
-											<li><a class="list" href="_products.jsp?brand=vans">VANS</a></li>
-											<li><a class="list" href="_products.jsp?brand=converse">CONVERSE</a></li>
+											<li><a class="list" href="_products.jsp?brand=nike&fun=Running">NIKE</a></li>
+											<li><a class="list" href="_products.jsp?brand=adidas&fun=Running">ADIDAS</a></li>
+											<li><a class="list" href="_products.jsp?brand=ua&fun=Running">UNDER ARMOUR</a></li>
+											<li><a class="list" href="_products.jsp?brand=aj&fun=Running">AIR JORDAN</a></li>
+											<li><a class="list" href="_products.jsp?brand=vans&fun=Running">VANS</a></li>
+											<li><a class="list" href="_products.jsp?brand=converse&fun=Running">CONVERSE</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<h4>By Function</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?function=high">High</a></li>
-											<li><a class="list" href="_products.jsp?function=middle">Middle</a></li>
-											<li><a class="list" href="_products.jsp?function=low">Low</a></li>
-											<li><a class="list" href="_products.jsp?function=elite">Elite</a></li>
+											<li><a class="list" href="_products.jsp?function=high&fun=Running">High</a></li>
+											<li><a class="list" href="_products.jsp?function=middle&fun=Running">Middle</a></li>
+											<li><a class="list" href="_products.jsp?function=low&fun=Running">Low</a></li>
+											<li><a class="list" href="_products.jsp?function=elite&fun=Running">Elite</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<h4>By Size</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?size=40">≤40</a></li>
-											<li><a class="list" href="_products.jsp?size=41">41</a></li>
-											<li><a class="list" href="_products.jsp?size=42">42</a></li>
-											<li><a class="list" href="_products.jsp?size=42.5">42.5</a></li>
-											<li><a class="list" href="_products.jsp?size=43">43</a></li>
-											<li><a class="list" href="_products.jsp?size=44">≥44</a></li>
+											<li><a class="list" href="_products.jsp?size=40&fun=Running">≤40</a></li>
+											<li><a class="list" href="_products.jsp?size=41&fun=Running">41</a></li>
+											<li><a class="list" href="_products.jsp?size=42&fun=Running">42</a></li>
+											<li><a class="list" href="_products.jsp?size=42.5&fun=Running">42.5</a></li>
+											<li><a class="list" href="_products.jsp?size=43&fun=Running">43</a></li>
+											<li><a class="list" href="_products.jsp?size=44&fun=Running">≥44</a></li>
 										</ul>
 									</div>
 								</div>
@@ -146,32 +146,32 @@
 									<div class="col-sm-3">
 										<h4>By Brand</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?brand=nike">NIKE</a></li>
-											<li><a class="list" href="_products.jsp?brand=adidas">ADIDAS</a></li>
-											<li><a class="list" href="_products.jsp?brand=ua">UNDER ARMOUR</a></li>
-											<li><a class="list" href="_products.jsp?brand=aj">AIR JORDAN</a></li>
-											<li><a class="list" href="_products.jsp?brand=vans">VANS</a></li>
-											<li><a class="list" href="_products.jsp?brand=converse">CONVERSE</a></li>
+											<li><a class="list" href="_products.jsp?brand=nike&fun=Casual">NIKE</a></li>
+											<li><a class="list" href="_products.jsp?brand=adidas&fun=Casual">ADIDAS</a></li>
+											<li><a class="list" href="_products.jsp?brand=ua&fun=Casual">UNDER ARMOUR</a></li>
+											<li><a class="list" href="_products.jsp?brand=aj&fun=Casual">AIR JORDAN</a></li>
+											<li><a class="list" href="_products.jsp?brand=vans&fun=Casual">VANS</a></li>
+											<li><a class="list" href="_products.jsp?brand=converse&fun=Casual">CONVERSE</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<h4>By Function</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?function=high">High</a></li>
-											<li><a class="list" href="_products.jsp?function=middle">Middle</a></li>
-											<li><a class="list" href="_products.jsp?function=low">Low</a></li>
-											<li><a class="list" href="_products.jsp?function=elite">Elite</a></li>
+											<li><a class="list" href="_products.jsp?function=high&fun=Casual">High</a></li>
+											<li><a class="list" href="_products.jsp?function=middle&fun=Casual">Middle</a></li>
+											<li><a class="list" href="_products.jsp?function=low&fun=Casual">Low</a></li>
+											<li><a class="list" href="_products.jsp?function=elite&fun=Casual">Elite</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3">
 										<h4>By Size</h4>
 										<ul class="multi-column-dropdown">
-											<li><a class="list" href="_products.jsp?size=40">≤40</a></li>
-											<li><a class="list" href="_products.jsp?size=41">41</a></li>
-											<li><a class="list" href="_products.jsp?size=42">42</a></li>
-											<li><a class="list" href="_products.jsp?size=42.5">42.5</a></li>
-											<li><a class="list" href="_products.jsp?size=43">43</a></li>
-											<li><a class="list" href="_products.jsp?size=44">≥44</a></li>
+											<li><a class="list" href="_products.jsp?size=40&fun=Casual">≤40</a></li>
+											<li><a class="list" href="_products.jsp?size=41&fun=Casual">41</a></li>
+											<li><a class="list" href="_products.jsp?size=42&fun=Casual">42</a></li>
+											<li><a class="list" href="_products.jsp?size=42.5&fun=Casual">42.5</a></li>
+											<li><a class="list" href="_products.jsp?size=43&fun=Casual">43</a></li>
+											<li><a class="list" href="_products.jsp?size=44&fun=Casual">≥44</a></li>
 										</ul>
 									</div>
 								</div>

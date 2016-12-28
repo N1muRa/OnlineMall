@@ -24,12 +24,10 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         String u_password = "";
 
         try {
-            Connection connection = Connector.GetInstance().getConn();
-            Statement statement = connection.createStatement();
 
             String sql = "SELECT * FROM user WHERE U_Email = '" + email + "'";
 
-            ResultSet resultSet = statement.executeQuery(sql);
+            ResultSet resultSet = Connector.GetInstance().doSelect(sql);
 
             while (resultSet.next()){
                 u_password = resultSet.getString("U_Pwd");
@@ -53,7 +51,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
             if ((password!=null)&&(password.trim().equals(u_password))){
                 session.setAttribute("account",accountBean);
 
-                String login_suc = "index.jsp";
+                //String login_suc = "index.jsp";
                 //response.sendRedirect(login_suc);
                 request.getRequestDispatcher("").forward(request,response);
                 return;

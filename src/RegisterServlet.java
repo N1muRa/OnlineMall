@@ -31,14 +31,16 @@ public class RegisterServlet extends HttpServlet {
         accountBean.setPassword(password);
 
         try {
-            Connection connection = Connector.GetInstance().getConn();
-            Statement statement = connection.createStatement();
+            //Connection connection = Connector.GetInstance().getConn();
+            //Statement statement = connection.createStatement();
 
             String sql = "INSERT INTO user(U_Name, U_Pwd, U_Email) VALUES('" + accountBean.getUsername() + "', '"+ accountBean.getPassword() +"', '"+ accountBean.getEmail() +"')hhh";
 
             //System.out.println("sql:"+sql);
 
-            int res = statement.executeUpdate(sql);
+            //int res = statement.executeUpdate(sql);
+
+            int res = Connector.GetInstance().doInsert(sql);
 
             if (res>0){
                 System.out.println("Success!");
@@ -50,10 +52,6 @@ public class RegisterServlet extends HttpServlet {
             }
             //connection.close();
 
-        } catch(SQLException e) {
-            //数据库连接失败异常处理
-            System.out.println("Fail");
-            e.printStackTrace();
         }catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

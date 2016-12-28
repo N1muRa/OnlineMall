@@ -14,51 +14,51 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String brand = request.getParameter("brand");
-    String function = request.getParameter("function");
+    String function = request.getParameter("fun");
 
-    if (brand!=null){
+    String sql = "";
 
-        Vector<Commodity> coms = new Vector<Commodity>();
+    if (brand!=null&&function!=null) sql = "SELECT * FROM commodity WHERE Co_Brand = '" + brand + "' AND Co_Fun = '"+ function +"'";
+    else if (brand!=null && function == null) sql = "SELECT * FROM commodity WHERE Co_Brand = '" + brand + "'";
+    else if (brand == null && function != null) sql = "SELECT * FROM commodity WHERE Co_Fun = '" + function + "'";
+    else sql = "SELECT * FROM commodity";
 
-        String co_name;
-        String co_img;
-        int co_price;
-        int co_num;
-        int co_id;
+    //sql = "SELECT * FROM commodity";
 
-        try {
-            Connection connection = Connector.GetInstance().getConn();
-            Statement statement = connection.createStatement();
+    Vector<Commodity> coms = new Vector<Commodity>();
 
-            String sql = "SELECT * FROM commodity WHERE Co_Brand = '" + brand + "'";
+    String co_name;
+    String co_img;
+    String co_fun;
+    int co_price;
+    int co_num;
+    int co_id;
 
-            ResultSet resultSet = statement.executeQuery(sql);
+    try {
+        ResultSet resultSet = Connector.GetInstance().doSelect(sql);
 
-            while (resultSet.next()){
-                co_name = resultSet.getString("Co_Name");
-                co_img = resultSet.getString("Co_Img");
-                co_price = Integer.parseInt(resultSet.getString("Co_Price"));
-                co_num = Integer.parseInt(resultSet.getString("Co_Number"));
-                co_id = Integer.parseInt(resultSet.getString("Co_ID"));
+        while (resultSet.next()){
+            co_name = resultSet.getString("Co_Name");
+            co_img = resultSet.getString("Co_Img");
+            co_price = Integer.parseInt(resultSet.getString("Co_Price"));
+            co_num = Integer.parseInt(resultSet.getString("Co_Number"));
+            co_id = Integer.parseInt(resultSet.getString("Co_ID"));
+            co_fun = resultSet.getString("Co_Fun");
 
+            Commodity com = new Commodity();
 
-                Commodity com = new Commodity();
+            com.setBrand(brand);
+            com.setImage(co_img);
+            com.setName(co_name);
+            com.setNumber(co_num);
+            com.setPrice(co_price);
+            com.setID(co_id);
+            com.setFunc(co_fun);
 
-                com.setBrand(brand);
-                com.setImage(co_img);
-                com.setName(co_name);
-                com.setNumber(co_num);
-                com.setPrice(co_price);
-                com.setID(co_id);
-
-                coms.add(com);
-
-                //System.out.println(co_id+" "+co_num+" "+co_price+" "+co_img+" "+co_name+" "+brand);
+            coms.add(com);
             }
 
             resultSet.close();
-            //connection.close();
-
         } catch(SQLException e) {
             //数据库连接失败异常处理
             System.out.println("Fail");
@@ -69,114 +69,153 @@
         }
 
         session.setAttribute("coms",coms);
-
-    }else if (function!=null){
-
-        Vector<Commodity> coms = new Vector<Commodity>();
-
-        String co_name;
-        String co_img;
-        int co_price;
-        int co_num;
-        int co_id;
-
-        try {
-            Connection connection = Connector.GetInstance().getConn();
-            Statement statement = connection.createStatement();
-
-            String sql = "SELECT * FROM commodity WHERE Co_Function = '" + function + "'";
-
-            ResultSet resultSet = statement.executeQuery(sql);
-
-            while (resultSet.next()){
-                co_name = resultSet.getString("Co_Name");
-                co_img = resultSet.getString("Co_Img");
-                co_price = Integer.parseInt(resultSet.getString("Co_Price"));
-                co_num = Integer.parseInt(resultSet.getString("Co_Number"));
-                co_id = Integer.parseInt(resultSet.getString("Co_ID"));
-
-                Commodity com = new Commodity();
-
-                com.setBrand(brand);
-                com.setImage(co_img);
-                com.setName(co_name);
-                com.setNumber(co_num);
-                com.setPrice(co_price);
-                com.setID(co_id);
-
-                coms.add(com);
-
-                //System.out.println(co_id+" "+co_num+" "+co_price+" "+co_img+" "+co_name+" "+brand);
-            }
-
-            resultSet.close();
-            //connection.close();
-
-        } catch(SQLException e) {
-            //数据库连接失败异常处理
-            System.out.println("Fail");
-            e.printStackTrace();
-        }catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-
-        session.setAttribute("coms",coms);
-
-    }else {
-        Vector<Commodity> coms = new Vector<Commodity>();
-
-        String co_name;
-        String co_img;
-        int co_price;
-        int co_num;
-        int co_id;
-
-        try {
-            Connection connection = Connector.GetInstance().getConn();
-            Statement statement = connection.createStatement();
-
-            String sql = "SELECT * FROM commodity";
-
-            ResultSet resultSet = statement.executeQuery(sql);
-
-            while (resultSet.next()){
-                co_name = resultSet.getString("Co_Name");
-                co_img = resultSet.getString("Co_Img");
-                co_price = Integer.parseInt(resultSet.getString("Co_Price"));
-                co_num = Integer.parseInt(resultSet.getString("Co_Number"));
-                co_id = Integer.parseInt(resultSet.getString("Co_ID"));
-
-                Commodity com = new Commodity();
-
-                com.setBrand(brand);
-                com.setImage(co_img);
-                com.setName(co_name);
-                com.setNumber(co_num);
-                com.setPrice(co_price);
-                com.setID(co_id);
-
-                coms.add(com);
-
-                //System.out.println(co_id+" "+co_num+" "+co_price+" "+co_img+" "+co_name+" "+brand);
-            }
-
-            resultSet.close();
-            //connection.close();
-
-        } catch(SQLException e) {
-            //数据库连接失败异常处理
-            System.out.println("Fail");
-            e.printStackTrace();
-        }catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-
-        session.setAttribute("coms",coms);
-
-    }
-
+//
+//    if (brand!=null){
+//
+//        try {
+////            Connection connection = Connector.GetInstance().getConn();
+////            Statement statement = connection.createStatement();
+////
+////            String sql = "SELECT * FROM commodity WHERE Co_Brand = '" + brand + "'";
+//
+//            ResultSet resultSet = Connector.GetInstance().doSelect(sql);
+//
+//            while (resultSet.next()){
+//                co_name = resultSet.getString("Co_Name");
+//                co_img = resultSet.getString("Co_Img");
+//                co_price = Integer.parseInt(resultSet.getString("Co_Price"));
+//                co_num = Integer.parseInt(resultSet.getString("Co_Number"));
+//                co_id = Integer.parseInt(resultSet.getString("Co_ID"));
+//                co_fun = resultSet.getString("Co_Fun");
+//
+//                Commodity com = new Commodity();
+//
+//                com.setBrand(brand);
+//                com.setImage(co_img);
+//                com.setName(co_name);
+//                com.setNumber(co_num);
+//                com.setPrice(co_price);
+//                com.setID(co_id);
+//                com.setFunc(co_fun);
+//
+//                coms.add(com);
+//
+//                //System.out.println(co_id+" "+co_num+" "+co_price+" "+co_img+" "+co_name+" "+brand);
+//            }
+//
+//            resultSet.close();
+//            //connection.close();
+//
+//        } catch(SQLException e) {
+//            //数据库连接失败异常处理
+//            System.out.println("Fail");
+//            e.printStackTrace();
+//        }catch (Exception e) {
+//            // TODO: handle exception
+//            e.printStackTrace();
+//        }
+//
+//        session.setAttribute("coms",coms);
+//
+//    }else if (function!=null){
+//        try {
+////            Connection connection = Connector.GetInstance().getConn();
+////            Statement statement = connection.createStatement();
+////
+////            String sql = "SELECT * FROM commodity WHERE Co_Function = '" + function + "'";
+//
+////            ResultSet resultSet = statement.executeQuery(sql);
+//
+//            ResultSet resultSet = Connector.GetInstance().doSelect(sql);
+//
+//            while (resultSet.next()){
+//                co_name = resultSet.getString("Co_Name");
+//                co_img = resultSet.getString("Co_Img");
+//                co_price = Integer.parseInt(resultSet.getString("Co_Price"));
+//                co_num = Integer.parseInt(resultSet.getString("Co_Number"));
+//                co_id = Integer.parseInt(resultSet.getString("Co_ID"));
+//
+//                Commodity com = new Commodity();
+//
+//                com.setBrand(brand);
+//                com.setImage(co_img);
+//                com.setName(co_name);
+//                com.setNumber(co_num);
+//                com.setPrice(co_price);
+//                com.setID(co_id);
+//
+//                coms.add(com);
+//
+//                //System.out.println(co_id+" "+co_num+" "+co_price+" "+co_img+" "+co_name+" "+brand);
+//            }
+//
+//            resultSet.close();
+//            //connection.close();
+//
+//        } catch(SQLException e) {
+//            //数据库连接失败异常处理
+//            System.out.println("Fail");
+//            e.printStackTrace();
+//        }catch (Exception e) {
+//            // TODO: handle exception
+//            e.printStackTrace();
+//        }
+//
+//        session.setAttribute("coms",coms);
+//
+//    }else {
+//        Vector<Commodity> coms = new Vector<Commodity>();
+//
+//        String co_name;
+//        String co_img;
+//        int co_price;
+//        int co_num;
+//        int co_id;
+//
+//        try {
+//            Connection connection = Connector.GetInstance().getConn();
+//            Statement statement = connection.createStatement();
+//
+//            String sql = "SELECT * FROM commodity";
+//
+//            ResultSet resultSet = statement.executeQuery(sql);
+//
+//            while (resultSet.next()){
+//                co_name = resultSet.getString("Co_Name");
+//                co_img = resultSet.getString("Co_Img");
+//                co_price = Integer.parseInt(resultSet.getString("Co_Price"));
+//                co_num = Integer.parseInt(resultSet.getString("Co_Number"));
+//                co_id = Integer.parseInt(resultSet.getString("Co_ID"));
+//
+//                Commodity com = new Commodity();
+//
+//                com.setBrand(brand);
+//                com.setImage(co_img);
+//                com.setName(co_name);
+//                com.setNumber(co_num);
+//                com.setPrice(co_price);
+//                com.setID(co_id);
+//
+//                coms.add(com);
+//
+//                //System.out.println(co_id+" "+co_num+" "+co_price+" "+co_img+" "+co_name+" "+brand);
+//            }
+//
+//            resultSet.close();
+//            //connection.close();
+//
+//        } catch(SQLException e) {
+//            //数据库连接失败异常处理
+//            System.out.println("Fail");
+//            e.printStackTrace();
+//        }catch (Exception e) {
+//            // TODO: handle exception
+//            e.printStackTrace();
+//        }
+//
+//        session.setAttribute("coms",coms);
+//
+//    }
     response.sendRedirect("products.jsp");
 
 %>

@@ -11,6 +11,11 @@ public class Commodity {
     private int ID=0;
     private String brand="";
     private String image="";
+    private String func="";
+
+    public String getFunc(){
+        return func;
+    }
 
     public int getID() {
         return ID;
@@ -34,6 +39,10 @@ public class Commodity {
 
     public String getBrand() {
         return brand;
+    }
+
+    public void setFunc(String func){
+        this.func = func;
     }
 
     public void setID(int ID) {

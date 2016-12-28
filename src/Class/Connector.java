@@ -67,6 +67,7 @@ public class Connector {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
         try {
             connection= DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
@@ -74,6 +75,72 @@ public class Connector {
             e.printStackTrace();
         }
 
+    }
+
+    public ResultSet doSelect(String sql){
+
+        try {
+            Connection connection = this.getConn();
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            return resultSet;
+
+        } catch(SQLException e) {
+            //数据库连接失败异常处理
+            System.out.println("Fail");
+            e.printStackTrace();
+        }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public int doInsert(String sql){
+        try {
+            Connection connection = this.getConn();
+
+            Statement statement = connection.createStatement();
+
+            int res = statement.executeUpdate(sql);
+
+            return res;
+
+        } catch(SQLException e) {
+            //数据库连接失败异常处理
+            System.out.println("Fail");
+            e.printStackTrace();
+        }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+    public int doUpdate(String sql){
+        try {
+            Connection connection = this.getConn();
+
+            Statement statement = connection.createStatement();
+
+            int res = statement.executeUpdate(sql);
+
+            return res;
+
+        } catch(SQLException e) {
+            //数据库连接失败异常处理
+            e.printStackTrace();
+        }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
     public void closeAll(ResultSet resultSet, Statement statement, Connection connection){
