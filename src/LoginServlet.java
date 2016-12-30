@@ -14,10 +14,10 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         HttpSession session = request.getSession();
         AccountBean accountBean = new AccountBean();
 
-        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
         String password = request.getParameter("password");
 
-        accountBean.setEmail(email);
+        accountBean.setPhone(phone);
         accountBean.setPassword(password);
 
         String u_name;
@@ -25,7 +25,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
         try {
 
-            String sql = "SELECT * FROM user WHERE U_Email = '" + email + "'";
+            String sql = "SELECT * FROM user WHERE U_Phone = '" + phone + "'";
 
             ResultSet resultSet = Connector.GetInstance().doSelect(sql);
 
@@ -47,7 +47,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
             e.printStackTrace();
         }
 
-        if ((email!=null)){
+        if ((phone!=null)){
             if ((password!=null)&&(password.trim().equals(u_password))){
                 session.setAttribute("account",accountBean);
 

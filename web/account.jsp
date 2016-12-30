@@ -99,7 +99,7 @@
 						</div>
 						<div>
 							<span>Verification Code<label>*</label></span>
-							<input name="code" type="text" style="width:425px;margin-right:100px;"><input type="button" onclick="<%=SendMessage.Send()%>" value="Send" style="font-size: 1.0em;color: #5D4B33;font-weight: 700;padding: 0.5em 3em;border: 7px solid #5D4B33;">
+							<input name="code" type="text" style="width:425px;margin-right:100px;"><input type="button" onclick="<%%>" value="Send" style="font-size: 1.0em;color: #5D4B33;font-weight: 700;padding: 0.5em 3em;border: 7px solid #5D4B33;">
 						</div>
 						<a class="news-letter" href="#">
 							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>

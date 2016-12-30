@@ -50,8 +50,17 @@
 <!-- cart -->
 <%
 	Vector<Commodity> coms = (Vector<Commodity>) session.getAttribute("coms");
-	int count = -1;
-	if (coms != null) count = coms.size();
+	int count = -1, page_num = -1, cur_page = 1;
+
+	if (coms != null) {
+		count = coms.size();
+		page_num = count / 9 + 1;
+	}
+
+	String now_page = request.getParameter("page");
+	if (now_page != null){
+		cur_page = Integer.parseInt(now_page.trim());
+	}
 %>
 <!-- the jScrollPane script -->
 <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
@@ -75,13 +84,13 @@
 			<h2>Our Shoes</h2>
 			<div class="col-md-9 product-model-sec">
 				<%
-					for (int i=0;i<(count<9?count:9);i++){
+					for (int i=0;i<(cur_page<page_num?9:count%9);i++){
 				%>
 				<div class="product-grid">
-					<a href="_single.jsp?ID=<%=coms.get(i).getID()%>">
+					<a href="_single.jsp?ID=<%=coms.get(i+(cur_page - 1)*9).getID()%>">
 						<div class="more-product"><span> </span></div>
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="<%=coms.get(i).getImage()%>" class="img-responsive" alt="">
+							<img src="<%=coms.get(i+(cur_page - 1)*9).getImage()%>" class="img-responsive" alt="">
 							<div class="b-wrapper">
 								<h4 class="b-animate b-from-left  b-delay03">
 									<button>View</button>
@@ -91,10 +100,10 @@
 					</a>
 					<div class="product-info simpleCart_shelfItem">
 						<div class="product-info-cust prt_name">
-							<h4><%=coms.get(i).getName()%></h4>
-							<span class="item_price"><%=Math.floor(coms.get(i).getPrice()+0.5)%></span>
+							<h4><%=coms.get(i+(cur_page - 1)*9).getName()%></h4>
+							<span class="item_price"><%=Math.floor(coms.get(i+(cur_page - 1)*9).getPrice()+0.5)%></span>
 							<div class="ofr">
-								<p class="pric1"><del><%=Math.floor(coms.get(i).getPrice()*1.15+0.5)%></del></p>
+								<p class="pric1"><del><%=Math.floor(coms.get(i+(cur_page - 1)*9).getPrice()*1.15+0.5)%></del></p>
 								<p class="disc">[15% Off]</p>
 							</div>
 							<input type="text" class="item_quantity" value="1" />
@@ -107,6 +116,7 @@
 					}
 				%>
 			</div>
+
 			<div class="col-md-3 rsidebar span_1_of_left">
 				<section  class="sky-form">
 					<div class="product_right">
@@ -307,12 +317,58 @@
                         <a class="color-choice" href="#"  data-facet-value-name="Pink" data-facet-name="Color" style="background-color: #d82a90;"></a>
                         <a class="color-choice" href="#"  data-facet-value-name="Olive" data-facet-name="Color" style="background-color: #7F7F00;"></a>
                         <a class="color-choice" href="#"  data-facet-value-name="Black" data-facet-name="Color" style="background-color: #000000;"></a>
-
 					</div>
 				</section>
 			<div class="clearfix"> </div>
 		</div>
 	</div>
+	<div align="center">当前是：<%=cur_page%>/<%=page_num%>页 共<%=coms.size()%>件商品
+            <%
+            	if(cur_page==1){
+            %>
+				<span class=''>首页</span> <span class=''>上一页</span>
+			<%
+				}else {
+			%>
+                <a href="_products.jsp">首页</a>
+                <a href="?page=<%=cur_page - 1%>">上一页</a>
+			<%
+            	}
+            %>
+            <% if(cur_page < page_num){%>
+                <a href="?page=<%=cur_page + 1%>">下一页</a>
+			<%
+            	}else {
+			%>
+                <span>下一页</span>
+            <%
+            	}
+			%>
+            <% if(cur_page < page_num){%>
+                <a href="?page=<%=page_num%>">尾页</a>
+            <%
+            	}else {
+			%>
+                <span>尾页</span>
+            <%
+            	}
+			%>
+            第<select name="PB_Page_Select" onchange="location.href='?page='+this.value">
+			<% for(int i = 1 ; i <= page_num; i++){
+				if(i == cur_page){
+			%>
+					<option value="<%=i%>" selected="selected"><%=i%>
+			<%
+				}else {
+			%>
+					<option value="<%=i%>"><%=i%></option>
+			<%
+				}
+			}
+			%>
+            </select>页
+        </div>
+	<br>
 	<!--//products-->
 	<!--footer-->
 	<%@include file="footer.jsp"%>

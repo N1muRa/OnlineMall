@@ -207,12 +207,12 @@
 									<%
 										if (account == null){
 									%>
-									<label for="email">Email Address</label>
-									<input type="text" name="email" id="email">
+									<label for="phone">Phone Number</label>
+									<input type="text" name="phone" id="phone">
 									<%
 										}else {
 									%>
-									<label for="email">Welcome:</label>
+									<label>Welcome:</label>
 									<a href="personalInfo.jsp"><%=account.getUsername()%></a>
 									<%
 										}
@@ -229,7 +229,6 @@
 								<%}else{%>
 								<input type="submit" id="login" value="Log out" formaction="Logout">
 								<%}%>
-								<!--label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label-->
 							</fieldset>
 							<%if (account == null){%>
 							<p>New User ? <a class="sign" href="account.jsp">Sign Up</a> <span><a href="#">Forgot your password?</a></span></p>

@@ -45,7 +45,7 @@
 	<div class="gallery">
 		<div class="container">
 			<div class="gallery-grids">
-				<div align="center" class="col-md-8 gallery-grid glry-one">
+				<div align="center" class="col-md-8 gallery-grid glry-one" style="height: 486.8px">
 					<a href="_products.jsp?size=40"><img src="images/g1.jpg" class="img-responsive" alt=""/>
 						<div class="gallery-info">
 							<p><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> view</p>

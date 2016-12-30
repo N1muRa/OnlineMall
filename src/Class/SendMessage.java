@@ -19,13 +19,13 @@ public class SendMessage {
      	client.executeMethod(post);
 	    Header[] headers = post.getResponseHeaders();
 	    int statusCode = post.getStatusCode();
-	    System.out.println("statusCode:"+statusCode);
-	    for(Header h : headers)
-	    {
-	    	System.out.println(h.toString());
-	    }
+//	    System.out.println("statusCode:"+statusCode);
+//	    for(Header h : headers)
+//	    {
+//	    	System.out.println(h.toString());
+//	    }
 	    String result = new String(post.getResponseBodyAsString().getBytes("gbk"));
-	    System.out.println(result);
+//	    System.out.println(result);
 	    post.releaseConnection();
 	}
 }

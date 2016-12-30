@@ -7,7 +7,16 @@ public class AccountBean {
 
     private String username = "";
     private String password = "";
+    private String phone = "";
     private String email = "";
+
+    public String getPhone(){
+        return phone;
+    }
+
+    public void setPhone(String phone){
+        this.phone = phone;
+    }
 
     public String getEmail(){
         return email;
