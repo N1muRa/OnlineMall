@@ -27,7 +27,7 @@
 
         ResultSet resultSet = statement.executeQuery(sql);
 
-        while (resultSet.next()){
+        while (resultSet.next()) {
             password = resultSet.getString("U_Pwd");
             username = resultSet.getString("U_Name");
         }
@@ -35,23 +35,23 @@
         resultSet.close();
         //connection.close();
 
-    } catch(SQLException e) {
+    } catch (SQLException e) {
         //数据库连接失败异常处理
         System.out.println("Fail");
         e.printStackTrace();
-    }catch (Exception e) {
+    } catch (Exception e) {
         // TODO: handle exception
         e.printStackTrace();
     }
 
-    if ((email!=null)){
-            if ((pwd!=null)&&(pwd.trim().equals(password))){
+    if ((email != null)) {
+        if ((pwd != null) && (pwd.trim().equals(password))) {
 %>
-    <jsp:setProperty property="username" name="user"></jsp:setProperty>
-    <jsp:setProperty property="password" name="user"></jsp:setProperty>
+<jsp:setProperty property="username" name="user"></jsp:setProperty>
+<jsp:setProperty property="password" name="user"></jsp:setProperty>
 <%
-                request.getRequestDispatcher("").forward(request,response);
-                return;
-            }
+            request.getRequestDispatcher("").forward(request, response);
+            return;
         }
+    }
 %>

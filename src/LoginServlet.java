@@ -1,5 +1,6 @@
 import Class.AccountBean;
 import Class.Connector;
+import Class.ShoppingCart;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         accountBean.setPhone(phone);
         accountBean.setPassword(password);
 
-        String u_name;
+        String u_name = "";
         String u_password = "";
 
         try {
@@ -29,7 +30,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
             ResultSet resultSet = Connector.GetInstance().doSelect(sql);
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 u_password = resultSet.getString("U_Pwd");
                 u_name = resultSet.getString("U_Name");
                 accountBean.setUsername(u_name);
@@ -38,22 +39,24 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
             resultSet.close();
             //connection.close();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             //数据库连接失败异常处理
             System.out.println("Fail");
             e.printStackTrace();
-        }catch (Exception e) {
+        } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
 
-        if ((phone!=null)){
-            if ((password!=null)&&(password.trim().equals(u_password))){
-                session.setAttribute("account",accountBean);
+        if ((phone != null)) {
+            if ((password != null) && (password.trim().equals(u_password))) {
+                session.setAttribute("account", accountBean);
 
-                //String login_suc = "index.jsp";
-                //response.sendRedirect(login_suc);
-                request.getRequestDispatcher("").forward(request,response);
+                ShoppingCart shoppingCart = new ShoppingCart();
+                shoppingCart.setUser(u_name);
+                session.setAttribute("sc",shoppingCart);
+
+                request.getRequestDispatcher("").forward(request, response);
                 return;
             }
         }
@@ -64,6 +67,6 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        doPost(request,response);
+        doPost(request, response);
     }
 }

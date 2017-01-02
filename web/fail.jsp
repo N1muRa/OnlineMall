@@ -11,6 +11,6 @@
     <title>Fail</title>
 </head>
 <body>
-    Login Failed!
+Login Failed!
 </body>
 </html>

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import Class.AccountBean;
 import Class.Connector;
 
@@ -26,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        accountBean.setUsername(firstName+" "+lastName);
+        accountBean.setUsername(firstName + " " + lastName);
         accountBean.setEmail(email);
         accountBean.setPassword(password);
 
@@ -34,7 +35,7 @@ public class RegisterServlet extends HttpServlet {
             //Connection connection = Connector.GetInstance().getConn();
             //Statement statement = connection.createStatement();
 
-            String sql = "INSERT INTO user(U_Name, U_Pwd, U_Email) VALUES('" + accountBean.getUsername() + "', '"+ accountBean.getPassword() +"', '"+ accountBean.getEmail() +"')hhh";
+            String sql = "INSERT INTO user(U_Name, U_Pwd, U_Email) VALUES('" + accountBean.getUsername() + "', '" + accountBean.getPassword() + "', '" + accountBean.getEmail() + "')hhh";
 
             //System.out.println("sql:"+sql);
 
@@ -42,17 +43,17 @@ public class RegisterServlet extends HttpServlet {
 
             int res = Connector.GetInstance().doInsert(sql);
 
-            if (res>0){
+            if (res > 0) {
                 System.out.println("Success!");
                 session.setAttribute("account", accountBean);
                 response.sendRedirect("index.jsp");
                 return;
-            }else {
+            } else {
                 System.out.println("Fail!");
             }
             //connection.close();
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }

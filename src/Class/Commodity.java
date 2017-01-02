@@ -5,15 +5,20 @@ package Class;
  */
 public class Commodity {
 
-    private String name="";
-    private int price=0;
-    private int number=0;
-    private int ID=0;
-    private String brand="";
-    private String image="";
-    private String func="";
+    private int ID = 0;
+    private String name = "";
+    private String color = "";
+    private String func = "";
+    private int price = 0;
+    private int number = 0;
+    private String brand = "";
+    private String image = "";
 
-    public String getFunc(){
+    public String getColor() {
+        return color;
+    }
+
+    public String getFunc() {
         return func;
     }
 
@@ -21,7 +26,7 @@ public class Commodity {
         return ID;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -41,7 +46,11 @@ public class Commodity {
         return brand;
     }
 
-    public void setFunc(String func){
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setFunc(String func) {
         this.func = func;
     }
 
@@ -49,7 +58,7 @@ public class Commodity {
         this.ID = ID;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 

@@ -5,40 +5,47 @@ package Class;
  */
 public class AccountBean {
 
-    private String username = "";
-    private String password = "";
-    private String phone = "";
-    private String email = "";
+    private String username;
+    private String password;
+    private String phone;
+    private String email;
 
-    public String getPhone(){
+    public AccountBean() {
+        username = "";
+        password = "";
+        phone = "";
+        email = "";
+    }
+
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone){
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email1){
+    public void setEmail(String email1) {
         email = email1;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password1){
+    public void setPassword(String password1) {
         password = password1;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username1){
+    public void setUsername(String username1) {
         username = username1;
     }
 }

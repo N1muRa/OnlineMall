@@ -18,6 +18,16 @@
         <servlet-class>RegisterServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ShopServlet</servlet-name>
+        <servlet-class>ShopServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShopServlet</servlet-name>
+        <url-pattern>/ShopServlet</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>

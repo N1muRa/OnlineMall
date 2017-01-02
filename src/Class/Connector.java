@@ -21,14 +21,14 @@ public class Connector {
 
     private static Connector connector;
 
-    public static Connector GetInstance(){
-        if (connector == null){
+    public static Connector GetInstance() {
+        if (connector == null) {
             connector = new Connector();
         }
         return connector;
     }
 
-    private Connector(){
+    private Connector() {
         driver = "com.mysql.jdbc.Driver";
         url = "jdbc:mysql://localhost:3306/j2ee";
         user = "root";
@@ -37,19 +37,19 @@ public class Connector {
         setConnection();
     }
 
-    public String getDriver(){
+    public String getDriver() {
         return driver;
     }
 
-    public String getUrl(){
+    public String getUrl() {
         return url;
     }
 
-    public String getUser(){
+    public String getUser() {
         return user;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
@@ -57,7 +57,7 @@ public class Connector {
         return connection;
     }
 
-    private void setConnection(){
+    private void setConnection() {
 
         connection = null;
 
@@ -69,7 +69,7 @@ public class Connector {
         }
 
         try {
-            connection= DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -77,7 +77,7 @@ public class Connector {
 
     }
 
-    public ResultSet doSelect(String sql){
+    public ResultSet doSelect(String sql) {
 
         try {
             Connection connection = this.getConn();
@@ -88,11 +88,11 @@ public class Connector {
 
             return resultSet;
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             //数据库连接失败异常处理
             System.out.println("Fail");
             e.printStackTrace();
-        }catch (Exception e) {
+        } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
@@ -100,7 +100,7 @@ public class Connector {
         return null;
     }
 
-    public int doInsert(String sql){
+    public int doInsert(String sql) {
         try {
             Connection connection = this.getConn();
 
@@ -110,11 +110,11 @@ public class Connector {
 
             return res;
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             //数据库连接失败异常处理
             System.out.println("Fail");
             e.printStackTrace();
-        }catch (Exception e) {
+        } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
@@ -122,7 +122,7 @@ public class Connector {
         return 0;
     }
 
-    public int doUpdate(String sql){
+    public int doUpdate(String sql) {
         try {
             Connection connection = this.getConn();
 
@@ -132,10 +132,10 @@ public class Connector {
 
             return res;
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             //数据库连接失败异常处理
             e.printStackTrace();
-        }catch (Exception e) {
+        } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
@@ -143,29 +143,29 @@ public class Connector {
         return 0;
     }
 
-    public void closeAll(ResultSet resultSet, Statement statement, Connection connection){
-        if (resultSet!=null){
+    public void closeAll(ResultSet resultSet, Statement statement, Connection connection) {
+        if (resultSet != null) {
             try {
                 resultSet.close();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
 
-        if (statement!=null){
+        if (statement != null) {
             try {
                 statement.close();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
 
-        if (connection!=null){
+        if (connection != null) {
             try {
                 connection.close();
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
