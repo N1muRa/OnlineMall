@@ -24,19 +24,19 @@ public class RegisterServlet extends HttpServlet {
 
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
         String password = request.getParameter("password");
 
         accountBean.setUsername(firstName + " " + lastName);
-        accountBean.setEmail(email);
+        accountBean.setPhone(phone);
         accountBean.setPassword(password);
 
         try {
             //Connection connection = Connector.GetInstance().getConn();
             //Statement statement = connection.createStatement();
 
-            String sql = "INSERT INTO user(U_Name, U_Pwd, U_Email) VALUES('" + accountBean.getUsername() + "', '" + accountBean.getPassword() + "', '" + accountBean.getEmail() + "')hhh";
-
+            String sql = "INSERT INTO user(U_Name, U_Pwd, U_Phone) VALUES('" + accountBean.getUsername() + "', '" + accountBean.getPassword() + "', '" + accountBean.getPhone() + "')";
+            System.out.print(sql);
             //System.out.println("sql:"+sql);
 
             //int res = statement.executeUpdate(sql);

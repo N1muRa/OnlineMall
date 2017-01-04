@@ -1,5 +1,6 @@
 <%@ page import="Class.Commodity" %>
-<%@ page import="java.io.*" %><%--
+<%@ page import="java.io.*" %>
+<%@ page import="java.util.Vector" %><%--
   Created by IntelliJ IDEA.
   User: №zero
   Date: 2016/12/18
@@ -52,8 +53,7 @@
 <!--//header-->
 <%
     Commodity commodity = (Commodity) session.getAttribute("com");
-    File dir = new File("D:\\Study\\Programming\\IntelliJ IDEA 2016.2.5\\OnlineMall\\web\\images\\Shoes");
-    File file[] = dir.listFiles();
+    Vector<Commodity> commodities = (Vector<Commodity>) session.getAttribute("all");
 %>
 <!--//single-page-->
 <div class="single">
@@ -63,20 +63,16 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <%
-                            for (int i = 0; i < file.length; i++) {
-                                if (file[i].isFile()) {
-                                    if (file[i].toString().indexOf(commodity.getName()) >= 0) {
-                                        String add = file[i].toString();
-                                        add = add.substring(59);
-                                        add = add.replace('\\', '/');
-                                        System.out.println(add);
+                            for (int i = 0; i < commodities.size(); i++){
+                                if (commodities.get(i).getName().equals(commodity.getName())){
+                                    String add = commodities.get(i).getImage();
+                                    System.out.println(add + " " + i);
                         %>
                         <li data-thumb="<%=add%>">
                             <div class="thumb-image"><img src="<%=add%>" data-imagezoom="true" class="img-responsive">
                             </div>
                         </li>
                         <%
-                                    }
                                 }
                             }
                         %>
@@ -86,20 +82,13 @@
             <div class="col-md-4 single-grid simpleCart_shelfItem">
                 <h3 align="center"><%=commodity.getName()%>
                 </h3>
-                <p>Cake cutting is one of the most wonderful ways of celebrating a special moment. What better way to
-                    celebrate than with a rich and mouth watering chocochips cake</p>
+                <p><%=commodity.getDescription1()%></p>
                 <ul class="size">
                     <h3>Size</h3>
                     <li><a href="#">40</a></li>
                     <li><a href="#">41</a></li>
                     <li><a href="#">42</a></li>
                     <li><a href="#">43</a></li>
-                </ul>
-                <ul class="size">
-                    <h3>2-3 Tier Cakes</h3>
-                    <li><a href="#">Red</a></li>
-                    <li><a href="#">Crimson-Dark </a></li>
-                    <li><a href="#">Pink</a></li>
                 </ul>
                 <div class="galry">
                     <div class="prices">
@@ -115,29 +104,24 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+                <form action="ShopServlet" method="post">
                 <p class="qty"> Qty : </p><input min="1" type="number" id="quantity" name="quantity" value="1"
                                                  class="form-control input-small">
                 <div class="btn_form">
-                    <a href="#" class="add-cart item_add">ADD TO CART</a>
+                    <input value="<%=commodity.getID()%>" name="id" hidden>
+                    <input type="submit" class="item_add items" value="ADD TO CART">
                 </div>
-                <div class="tag">
-                    <p>Category : <a href="#"> Cakes</a></p>
-                    <p>Tag : <a href="#"> Lorem ipsum </a></p>
-                </div>
+                </form>
             </div>
             <div class="col-md-4 single-grid1">
-                <h2>Class</h2>
+                <h2>Customer</h2>
                 <ul>
-                    <li><a href="#">Offers</a></li>
-                    <li><a href="products.jsp">New products</a></li>
+                    <li><a href="_products.jsp">products</a></li>
                     <li><a href="account.jsp">Register</a></li>
-                    <li><a href="account.jsp">Forgot Your Password</a></li>
-                    <li><a href="account.jsp">My account</a></li>
+                    <li><a href="personalInfo.jsp">Forgot Your Password</a></li>
+                    <li><a href="personalInfo.jsp">My account</a></li>
                     <li><a href="contact.jsp">Address</a></li>
-                    <li><a href="checkout.jsp">wishlist</a></li>
-                    <li><a href="checkout.jsp">Order history</a></li>
-                    <li><a href="#">Downloads</a></li>
-                    <li><a href="#">Reward points</a></li>
+                    <li><a href="personalInfo.jsp">wishlist</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -159,13 +143,7 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
+                        <%=commodity.getDescription2()%>
                     </div>
                 </div>
             </div>
@@ -241,11 +219,16 @@
     <div class="container">
         <h3>Related Products</h3>
         <div class="product-model-sec single-product-grids">
+            <%
+                for (int i = 0; i<4;i++){
+                    int id = (commodity.getID() + 3*i)%50;
+                    Commodity commodity1 = commodities.get(id);
+            %>
             <div class="product-grid single-product">
-                <a href="single.jsp">
+                <a href="_single.jsp?ID=<%=id%>">
                     <div class="more-product"><span> </span></div>
                     <div class="product-img b-link-stripe b-animate-go  thickbox">
-                        <img src="images/m1.png" class="img-responsive" alt="">
+                        <img src="<%=commodity1.getImage()%>" class="img-responsive" alt="">
                         <div class="b-wrapper">
                             <h4 class="b-animate b-from-left  b-delay03">
                                 <button>View</button>
@@ -255,11 +238,11 @@
                 </a>
                 <div class="product-info simpleCart_shelfItem">
                     <div class="product-info-cust prt_name">
-                        <h4>Product #1</h4>
-                        <span class="item_price">$2000</span>
+                        <h4><%=commodity1.getName()%></h4>
+                        <span class="item_price"><%=Math.floor(commodity1.getPrice() + 0.5)%></span>
                         <div class="ofr">
                             <p class="pric1">
-                                <del>$2300</del>
+                                <del><%=Math.floor(commodity1.getPrice() * 1.15 + 0.5)%></del>
                             </p>
                             <p class="disc">[15% Off]</p>
                         </div>
@@ -267,84 +250,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-grid single-product">
-                <a href="single.jsp">
-                    <div class="more-product"><span> </span></div>
-                    <div class="product-img b-link-stripe b-animate-go  thickbox">
-                        <img src="images/m2.png" class="img-responsive" alt="">
-                        <div class="b-wrapper">
-                            <h4 class="b-animate b-from-left  b-delay03">
-                                <button>View</button>
-                            </h4>
-                        </div>
-                    </div>
-                </a>
-                <div class="product-info simpleCart_shelfItem">
-                    <div class="product-info-cust prt_name">
-                        <h4>Product #1</h4>
-                        <span class="item_price">$2000</span>
-                        <div class="ofr">
-                            <p class="pric1">
-                                <del>$2300</del>
-                            </p>
-                            <p class="disc">[15% Off]</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-grid single-product">
-                <a href="single.jsp">
-                    <div class="more-product"><span> </span></div>
-                    <div class="product-img b-link-stripe b-animate-go  thickbox">
-                        <img src="images/m3.png" class="img-responsive" alt="">
-                        <div class="b-wrapper">
-                            <h4 class="b-animate b-from-left  b-delay03">
-                                <button>View</button>
-                            </h4>
-                        </div>
-                    </div>
-                </a>
-                <div class="product-info simpleCart_shelfItem">
-                    <div class="product-info-cust prt_name">
-                        <h4>Product #1</h4>
-                        <span class="item_price">$2000</span>
-                        <div class="ofr">
-                            <p class="pric1">
-                                <del>$2300</del>
-                            </p>
-                            <p class="disc">[15% Off]</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-grid single-product">
-                <a href="single.jsp">
-                    <div class="more-product"><span> </span></div>
-                    <div class="product-img b-link-stripe b-animate-go  thickbox">
-                        <img src="images/m4.png" class="img-responsive" alt="">
-                        <div class="b-wrapper">
-                            <h4 class="b-animate b-from-left  b-delay03">
-                                <button>view</button>
-                            </h4>
-                        </div>
-                    </div>
-                </a>
-                <div class="product-info simpleCart_shelfItem">
-                    <div class="product-info-cust prt_name">
-                        <h4>Product #1</h4>
-                        <span class="item_price">$2000</span>
-                        <div class="ofr">
-                            <p class="pric1">
-                                <del>$2300</del>
-                            </p>
-                            <p class="disc">[15% Off]</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
+            <%}%>
             <div class="clearfix"></div>
         </div>
     </div>

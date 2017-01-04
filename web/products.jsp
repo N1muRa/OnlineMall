@@ -57,8 +57,6 @@
     <!-- cart -->
     <%
         Vector<Commodity> coms = (Vector<Commodity>) session.getAttribute("coms");
-        ShoppingCart sc = (ShoppingCart) session.getAttribute("sc");
-        System.out.println(sc.getSumPrice());
         int count = -1, page_num = -1, cur_page = 1;
 
         if (coms != null) {
@@ -73,19 +71,11 @@
     %>
     <script>
 
-        function showShoes(checkbox) {
+        function showShoes(s) {
 
-            var str = checkbox.name + "=" + checkbox.value;
-
-            if (checkbox.checked == false) {
-                str = "";
-            }
+            var str = "?" + s.name + "=" + s.value;
 
             var xmlhttp = new XMLHttpRequest();
-            if (str == "") {
-                document.getElementById("products").innerHTML = "";
-                return;
-            }
 
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -94,7 +84,7 @@
                 }
             }
 
-            xmlhttp.open("POST", "up_ajax.jsp?" + str, true);
+            xmlhttp.open("POST", "up_ajax.jsp" + str, true);
             xmlhttp.send();
         }
     </script>
@@ -135,7 +125,7 @@
                     </div>
                 </a>
                 <div class="product-info simpleCart_shelfItem">
-                    <form action="ShopServlet" id="commodity">
+                    <form action="ShopServlet" method="post">
                     <div class="product-info-cust prt_name">
                         <h4><%=coms.get(cur).getName()%>
                         </h4>
@@ -289,24 +279,24 @@
                 <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>COLLECTIONS</h4>
                 <div class="row row1 scroll-pane">
                     <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="brand" value="Nike"><i></i>
+                        <label class="checkbox"><input onclick="showShoes(this)" type="radio" name="brand" value="Nike"><i></i>
                             <h class="ziti">Nike Zoom</h>
                         </label>
                     </div>
                     <div class="col col-4">
-                        <label class="checkbox"><input onclick="showShoes(this)" type="checkbox" name="brand"
+                        <label class="checkbox"><input onclick="showShoes(this)" type="radio" name="brand"
                                                        value="Nike"><i></i>
                             <h class="ziti">Nike Lunarlon</h>
                         </label>
-                        <label class="checkbox"><input onclick="showShoes(this)" type="checkbox" name="brand"
+                        <label class="checkbox"><input onclick="showShoes(this)" type="radio" name="brand"
                                                        value="Air Jordan"><i></i>
                             <h class="ziti">Nike Air Max</h>
                         </label>
-                        <label class="checkbox"><input onclick="showShoes(this)" type="checkbox" name="brand"
+                        <label class="checkbox"><input onclick="showShoes(this)" type="radio" name="brand"
                                                        value="Adidas"><i></i>
                             <h class="ziti">Adidas Boost</h>
                         </label>
-                        <label class="checkbox"><input onclick="showShoes(this)" type="checkbox" name="brand"><i></i>
+                        <label class="checkbox"><input onclick="showShoes(this)" type="radio" name="brand"><i></i>
                             <h class="ziti" value="Under Armour">UA Clutch</h>
                         </label>
                     </div>
@@ -344,65 +334,37 @@
                 <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>By SHOE HEIGHT</h4>
                 <div class="row row1 scroll-pane">
                     <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>
+                        <label class="checkbox"><input onclick="showShoes(this)" value="Low" type="radio" name="height"><i></i>
                             <h class="ziti">Low Hight</h>
                         </label>
                     </div>
                     <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>
+                        <label class="checkbox"><input onclick="showShoes(this)" value="Middle" type="radio" name="height"><i></i>
                             <h class="ziti">Mid Hight</h>
                         </label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>
+                        <label class="checkbox"><input onclick="showShoes(this)" value="High" type="radio" name="height"><i></i>
                             <h class="ziti">High Hight</h>
                         </label>
                     </div>
                 </div>
             </section>
-            <section class="sky-form">
-                <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>WIDTH</h4>
-                <div class="row row1 scroll-pane">
-                    <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>
-                            <h class="ziti">Narrow
-                        </label>
-                    </div>
-                    <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>
-                            <h class="ziti">Regular</h>
-                        </label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>
-                            <h class="ziti">Wide</h>
-                        </label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>
-                            <h class="ziti">Extra Wide</h>
-                        </label>
-                    </div>
-                </div>
-            </section>
-            <section class="sky-form">
+            <section >
                 <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Color</h4>
-                <div class="row row1 scroll-pane">
-                    <a class="color-choice" href="#" data-facet-value-name="White" data-facet-name="Color"
-                       style="background-color: #fff;"></a>
-                    <a class="color-choice" href="#" data-facet-value-name="Silver" data-facet-name="Color"
-                       style="background-color: #e5e5e5;"></a>
-                    <a class="color-choice" href="#" data-facet-value-name="Gold" data-facet-name="Color"
-                       style="background-color: #DAAF00;"></a>
-                    <a class="color-choice" href="#" data-facet-value-name="Orange" data-facet-name="Color"
-                       style="background-color: #f36b26;"></a>
-                    <a class="color-choice" href="#" data-facet-value-name="Red" data-facet-name="Color"
-                       style="background-color: #e7352b;"></a>
-                    <a class="color-choice" href="#" data-facet-value-name="Green" data-facet-name="Color"
-                       style="background-color: #7bba3c;"></a>
-                    <a class="color-choice" href="#" data-facet-value-name="Blue" data-facet-name="Color"
-                       style="background-color: #1790c8;"></a>
-                    <a class="color-choice" href="#" data-facet-value-name="Pink" data-facet-name="Color"
-                       style="background-color: #d82a90;"></a>
-                    <a class="color-choice" href="#" data-facet-value-name="Olive" data-facet-name="Color"
-                       style="background-color: #7F7F00;"></a>
-                    <a class="color-choice" href="#" data-facet-value-name="Black" data-facet-name="Color"
-                       style="background-color: #000000;"></a>
-                </div>
+                <form>
+                    <div class="row row1 scroll-pane">
+                        <input onclick="showShoes(this)" type="radio" name="color" value="White"><a class="color-choice" style="background-color: #fff;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Gray"><a class="color-choice" style="background-color: #e5e5e5;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Gold"><a class="color-choice" style="background-color: #F0E68C;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Yellow"><a class="color-choice" style="background-color: #DAAF00;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Orange"><a class="color-choice" style="background-color: #f36b26;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Red"><a class="color-choice" style="background-color: #e7352b;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Green"><a class="color-choice" style="background-color: #7bba3c;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Blue"><a class="color-choice" style="background-color: #1790c8;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Pink"><a class="color-choice" style="background-color: #d82a90;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Olive"><a class="color-choice" style="background-color: #7F7F00;"></a>
+                        <input onclick="showShoes(this)" type="radio" name="color" value="Black"><a class="color-choice" style="background-color: #000000;"></a>
+                    </div>
+                </form>
             </section>
             <div class="clearfix"></div>
         </div>

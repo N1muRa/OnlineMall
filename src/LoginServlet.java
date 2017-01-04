@@ -1,6 +1,5 @@
 import Class.AccountBean;
 import Class.Connector;
-import Class.ShoppingCart;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -20,6 +19,14 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
         accountBean.setPhone(phone);
         accountBean.setPassword(password);
+
+        System.out.print(phone+" " +password);
+
+        if (phone.equals("admin") && password.equals("123456")){
+            session.setAttribute("account", accountBean);
+            response.sendRedirect("add.jsp");
+            return;
+        }
 
         String u_name = "";
         String u_password = "";
@@ -51,10 +58,6 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         if ((phone != null)) {
             if ((password != null) && (password.trim().equals(u_password))) {
                 session.setAttribute("account", accountBean);
-
-                ShoppingCart shoppingCart = new ShoppingCart();
-                shoppingCart.setUser(u_name);
-                session.setAttribute("sc",shoppingCart);
 
                 request.getRequestDispatcher("").forward(request, response);
                 return;

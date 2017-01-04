@@ -17,14 +17,15 @@
 <%
     String brand = request.getParameter("brand");
     String function = request.getParameter("fun");
-
+    String height = request.getParameter("height");
+    String color = request.getParameter("color");
     Vector<Commodity> commodities = (Vector<Commodity>) session.getAttribute("all");
 
     System.out.print(commodities.size());
 
     for (int i=0;i<commodities.size();i++){
         Commodity commodity = commodities.get(i);
-        if ((brand == null||brand.equals(commodity.getBrand())&&(function == null || function.equals(commodity.getFunc())))){
+        if ((color == null || commodity.getColor().contains(color))&&(height == null || height.equals(commodity.getType()))&&(brand == null||brand.equals(commodity.getBrand())&&(function == null || function.equals(commodity.getFunc())))){
             response.getWriter().write("<div class=\"product-grid\">");
             response.getWriter().write("<a href=\"_single.jsp?ID=" + commodity.getID() + "\">");
             response.getWriter().write("<div class=\"more-product\"><span> </span></div>");

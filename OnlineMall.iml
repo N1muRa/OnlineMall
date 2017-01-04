@@ -25,5 +25,8 @@
     <orderEntry type="library" name="commons-codec-1.4" level="project" />
     <orderEntry type="library" name="commons-httpclient-3.1" level="project" />
     <orderEntry type="library" name="commons-logging-1.1.1" level="project" />
+    <orderEntry type="library" name="activation" level="project" />
+    <orderEntry type="library" name="commons-email-1.2" level="project" />
+    <orderEntry type="library" name="javax.mail" level="project" />
   </component>
 </module>

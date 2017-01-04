@@ -35,6 +35,7 @@
 <body>
 <!--header-->
 <%@include file="header.jsp" %>
+<%String code = session.getAttribute("code").toString();%>
 <!--//header-->
 <script type="text/javascript">
 
@@ -42,6 +43,7 @@
 
         var phone = document.userForm.phone.value;
         var pwd = myForm.password.value;
+        var code = document.userForm.code.value;
 
         if (myForm.firstName.value == "") {
             alert("Please input your first name!");
@@ -50,7 +52,10 @@
             alert("Please input your last name!");
             return false;
         } else if (phone == "") {
-            alert("Please input your Email Address!");
+            alert("Please input your Phone Number!");
+            return false;
+        } else if (code != <%=code%>) {
+            alert("Please input the right code!");
             return false;
         }
         else if (myForm.password.value == "") {
@@ -70,12 +75,29 @@
 
     function submitFunc(act) {
 
-        userForm.action.value = act;
-
         var isValid = true;
 
         if (act == "Register") {
             isValid = validate_user_info(userForm);
+        }else {
+
+            alert("VERIFICATION CODE HAS BEEN SENT!");
+
+            var phone = document.userForm.phone.value;
+
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    //document.getElementById("products").innerHTML = xmlhttp.responseText;
+                    //document.getElementById("pages").innerHTML = "";
+                }
+            }
+
+            xmlhttp.open("POST", "Send.jsp?phone=" + phone, true);
+            xmlhttp.send();
+
+            return;
         }
 
         if (isValid) {
@@ -87,7 +109,7 @@
 <div class="account">
     <div class="container">
         <div class="register">
-            <form name="userForm">
+            <form name="userForm" method="post" action="Register">
                 <div class="register-top-grid">
                     <h3>Personal information</h3>
                     <div class="input">
@@ -100,12 +122,12 @@
                     </div>
                     <div class="input">
                         <span>Phone Number<label>*</label></span>
-                        <input type="text" name="phone" value="">
+                        <input type="text" name="phone">
                     </div>
                     <div>
                         <span>Verification Code<label>*</label></span>
-                        <input name="code" type="text" style="width:425px;margin-right:100px;"><input type="button"
-                                                                                                      onclick="<%%>"
+                        <input id="code" name="code" type="text" style="width:425px;margin-right:100px;"><input type="button"
+                                                                                                      onclick="submitFunc('Send')"
                                                                                                       value="Send"
                                                                                                       style="font-size: 1.0em;color: #5D4B33;font-weight: 700;padding: 0.5em 3em;border: 7px solid #5D4B33;">
                     </div>

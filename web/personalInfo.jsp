@@ -26,6 +26,21 @@
     <!-- js -->
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+    <script>
+        function upload()
+        {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("Pic").innerHTML = xmlhttp.responseText;
+                }
+            }
+
+            xmlhttp.open("POST", "Up_load.jsp", true);
+            xmlhttp.send();
+        }
+    </script>
     <!-- //js -->
     <style type="text/css" media="screen">
         .table_row h1 {
@@ -70,9 +85,11 @@
         <tr>
             <td align="left" width="50" valign="middle" height="60"><h1>Avatar</h1>
             </td>
-            <td align="left" width="100" valign="middle" height="60"><img src="images/T1.jpg" alt="" width="80"
-                                                                          height="80" style="margin-bottom: 10px;">
-                <input type="file">
+            <td align="left" width="100" valign="middle" height="60">
+               <div id="Pic">
+                <img src="" alt="" width="80" height="80" style="margin-bottom: 10px;" id="Ava"><br>
+               </div>
+                <input type="submit" onclick="upload()" value="Upload" style="border: 2px solid #F07818;color: #FFF;font-size: 1.1em;padding: 0.5em 1.5em;transition: 0.5s all;-webkit-transition: 0.5s all;-moz-transition: 0.5s all;-o-transition: 0.5s all;display:inline-block; outline: none;background-color: #F07818;">
         </tr>
         <tr>
             <td align="left" width="50" valign="middle" height="60"><h1>Password</h1>

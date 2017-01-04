@@ -1,6 +1,7 @@
-<%@page import="Class.AccountBean" %>
+<%@page import="Class.*" %>
 <%@page import="java.io.PrintWriter" %>
-<%@page import="Class.ShoppingCart" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Vector" %>
 <%--
   Created by IntelliJ IDEA.
   User: №zero
@@ -9,6 +10,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    Vector<Commodity> c = (Vector<Commodity>) session.getAttribute("all");
+    List<ShoppingList> shoppingLists = (List<ShoppingList>) session.getAttribute("SL");
+    int counts = shoppingLists.size();
+    double sumprice = 0.0;
+    for (int i = 0;i< 2; i++){
+        for (int j = 0; j < c.size(); j++){
+            if (Integer.parseInt(shoppingLists.get(i).getCo_ID()) == c.get(j).getID()){
+                sumprice += c.get(j).getPrice();
+            }
+        }
+    }
+%>
 <html>
 <div class="header">
     <div class="container">
@@ -218,7 +232,7 @@
                 <div class="search">
                     <form class="navbar-form">
                         <input type="text" class="form-control">
-                        <button type="submit" class="btn btn-default" aria-label="Left Align">
+                        <button type="button" class="btn btn-default" aria-label="Left Align">
                             Search
                         </button>
                     </form>
@@ -230,7 +244,6 @@
                     <%
                         PrintWriter Out = response.getWriter();
                         AccountBean account = (AccountBean) session.getAttribute("account");
-                        ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("sc");
                     %>
                     <form id="loginForm" action="Login">
                         <fieldset id="body">
@@ -273,11 +286,10 @@
                 <a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                 <div class="cart-box">
                     <h4><a href="checkout.jsp">
-                        <span class="simpleCart_total"> $<%=shoppingCart == null?0.0:shoppingCart.getSumPrice()%></span>
-                        (<span id="simpleCart_quantity"
-                               class="simpleCart_quantity"><%=shoppingCart==null?0:shoppingCart.getNum()%></span>)
+                        <span><%=sumprice%></span>
+                        (<span><%=counts%></span>)
                     </a></h4>
-                    <p><a onclick="<%if(shoppingCart!=null){shoppingCart.empty();System.out.println(shoppingCart.getNum());}%>" class="simpleCart_empty">Empty cart</a></p>
+                    <p><a onclick="" class="simpleCart_empty">Empty cart</a></p>
                     <div class="clearfix"></div>
                 </div>
             </div>

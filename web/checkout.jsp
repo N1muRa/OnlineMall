@@ -1,4 +1,6 @@
-<%@page import="Class.Commodity" %><%--
+<%@page import="Class.*" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Vector" %><%--
   Created by IntelliJ IDEA.
   User: №zero
   Date: 2016/12/18
@@ -36,104 +38,63 @@
 <%@include file="header.jsp" %>
 <!--//header-->
 <%
-    ShoppingCart sc = (ShoppingCart) session.getAttribute("sc");
-    int num1 = sc.getNum(), num2 = shoppingCart.getNum();
-    System.out.println(num1+" "+num2);
+    List<ShoppingList> com = (List<ShoppingList>) session.getAttribute("SL");
+    Vector<Commodity> commodities = (Vector<Commodity>) session.getAttribute("all");
 %>
 <!--cart-items-->
 <div class="cart-items">
     <div class="container">
-        <h2>My Shopping Cart(<%=num1%>)</h2>
+        <h2>My Shopping Cart(<%=com.size()%>)</h2>
+        <%
+            for (int i = 0; i < com.size(); i++ ){
+                Commodity commodity = new Commodity();
+                for (int j = 0;j < commodities.size(); j++){
+                    commodity = commodities.get(j);
+                    //System.out.println(com.get(i).getCo_ID() + " " + commodity.getID());
+                    if (Integer.parseInt(com.get(i).getCo_ID()) == commodity.getID()){
+                        break;
+                    }
+                }
+        %>
         <script>$(document).ready(function (c) {
-            $('.close1').on('click', function (c) {
-                $('.cart-header').fadeOut('slow', function (c) {
-                    $('.cart-header').remove();
+            $('.close<%=i+1%>').on('click', function (c) {
+                $('.cart-header<%=i+1%>').fadeOut('slow', function (c) {
+                    $('.cart-header<%=i+1%>').remove();
                 });
             });
         });
         </script>
-        <div class="cart-header">
-            <div class="close1"></div>
+        <div class="cart-header<%=i+1%>">
+            <div class="close<%=i+1%>"></div>
             <div class="cart-sec simpleCart_shelfItem">
                 <div class="cart-item cyc">
-                    <%Commodity commodity = sc.getCommodity(0);%>
                     <img src="<%=commodity.getImage()%>" class="img-responsive" alt="">
                 </div>
                 <div class="cart-item-info">
-                    <h3><a href="#"> <%=commodity.getName()%> </a><span>Function:<%=commodity.getFunc()%></span></h3>
+                    <h3><a href="#">  </a><span><%=commodity.getName()%></span></h3>
                     <ul class="qty">
                         <li><p>Brand:<%=commodity.getBrand()%></p></li>
                         <li><p>FREE delivery</p></li>
                     </ul>
                     <div class="delivery">
-                        <p>Price : <%=commodity.getPrice()%></p>
-                        <span>Delivered in 1-1:30 hours</span>
+                        <p>Price: <%=commodity.getPrice()%></p>
+                        <span>Time: <%=com.get(i).getL_Time()%></span>
                         <div class="clearfix"></div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
+
             </div>
         </div>
-        <script>$(document).ready(function (c) {
-            $('.close2').on('click', function (c) {
-                $('.cart-header2').fadeOut('slow', function (c) {
-                    $('.cart-header2').remove();
-                });
-            });
-        });
-        </script>
-        <div class="cart-header2">
-            <div class="close2"></div>
-            <div class="cart-sec simpleCart_shelfItem">
-                <div class="cart-item cyc">
-                    <img src="images/m2.png" class="img-responsive" alt="">
-                </div>
-                <div class="cart-item-info">
-                    <h3><a href="#"> Lorem Ipsum is not simply </a><span>Pickup time:</span></h3>
-                    <ul class="qty">
-                        <li><p>Min. order value:</p></li>
-                        <li><p>FREE delivery</p></li>
-                    </ul>
-                    <div class="delivery">
-                        <p>Service Charges : $10.00</p>
-                        <span>Delivered in 1-1:30 hours</span>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <script>$(document).ready(function (c) {
-            $('.close3').on('click', function (c) {
-                $('.cart-header3').fadeOut('slow', function (c) {
-                    $('.cart-header3').remove();
-                });
-            });
-        });
-        </script>
-        <div class="cart-header3">
-            <div class="close3"></div>
-            <div class="cart-sec simpleCart_shelfItem">
-                <div class="cart-item cyc">
-                    <img src="images/m3.png" class="img-responsive" alt="">
-                </div>
-                <div class="cart-item-info">
-                    <h3><a href="#"> Lorem Ipsum is not simply </a><span>Pickup time:</span></h3>
-                    <ul class="qty">
-                        <li><p>Min. order value:</p></li>
-                        <li><p>FREE delivery</p></li>
-                    </ul>
-                    <div class="delivery">
-                        <p>Service Charges : $10.00</p>
-                        <span>Delivered in 1-1:30 hours</span>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+        <%}%>
+        <div style="float:right;">
+            <input type="submit" value="Confirm" style="border: 2px solid #F07818;color: #FFF;
+                font-size: 1.1em;padding: 0.5em 1.5em;transition: 0.5s all;-webkit-transition: 0.5s all;-moz-transition: 0.5s all;-o-transition: 0.5s all;display:inline-block; outline: none;background-color: #F07818;">
         </div>
     </div>
+
 </div>
+
 <!--//checkout-->
 <!--footer-->
 <%@include file="footer.jsp" %>

@@ -13,6 +13,25 @@ public class Commodity {
     private int number = 0;
     private String brand = "";
     private String image = "";
+    private String type = "";
+    private String description1 = "";
+    private String description2 = "";
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDescription1() {
+        return description1;
+    }
+
+    public String getDescription2() {
+        return description2;
+    }
 
     public String getColor() {
         return color;
@@ -44,6 +63,14 @@ public class Commodity {
 
     public String getBrand() {
         return brand;
+    }
+
+    public void setDescription1(String description1) {
+        this.description1 = description1;
+    }
+
+    public void setDescription2(String description2) {
+        this.description2 = description2;
     }
 
     public void setColor(String color) {

@@ -11,11 +11,11 @@ import org.apache.commons.httpclient.methods.PostMethod;
  * Created by 王承 on 2016/12/24.
  */
 public class SendMessage {
-    public static void Send() throws Exception {
+    public static void Send(String phone, String code) throws Exception {
         HttpClient client = new HttpClient();
         PostMethod post = new PostMethod("http://gbk.sms.webchinese.cn");
         post.addRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=gbk");//在头文件中设置转码
-        NameValuePair[] data = {new NameValuePair("Uid", "Tedstack"), new NameValuePair("Key", "3843db63e8f6797fe3f8"), new NameValuePair("smsMob", "13917100342"), new NameValuePair("smsText", "验证码：350402  【华东师范大学】")};
+        NameValuePair[] data = {new NameValuePair("Uid", "Tedstack"), new NameValuePair("Key", "3843db63e8f6797fe3f8"), new NameValuePair("smsMob", phone), new NameValuePair("smsText", "验证码："+ code +"  【华东师范大学】")};
         post.setRequestBody(data);
         client.executeMethod(post);
         Header[] headers = post.getResponseHeaders();
@@ -29,4 +29,9 @@ public class SendMessage {
 //	    System.out.println(result);
         post.releaseConnection();
     }
+
+    public static void print(String s){
+        System.out.print(s);
+    }
+
 }

@@ -30,7 +30,21 @@
     <!-- cart -->
     <script src="js/simpleCart.min.js"></script>
     <!-- cart -->
+    <script>
+        function SendMail()
+        {
+            var xmlhttp = new XMLHttpRequest();
 
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("Mail").innerHTML = xmlhttp.responseText;
+                }
+            }
+
+            xmlhttp.open("POST", "Mail.jsp", true);
+            xmlhttp.send();
+        }
+    </script>
     <!-- map-->
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -185,48 +199,39 @@
         </script>
 
         <div class="contact-infom">
-            <h4>Miscellaneous information :</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sheets containing Lorem Ipsum passages,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.It was popularised in the 1960s with
-                the release of Letraset
-                and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
-                Ipsum.</p>
+            <h4>WHO WE ARE :</h4>
+            <p>Based in California, Sneakerhead.com is a leading Internet retailer committed to providing unrivaled customer service, exclusive footwear, and a superior experience. We are passionate about sneakers, and continually strive to carry the best selection available anywhere - including athletic shoes, limited editions, retro classics, and lifestyle models.
+                With 100% authentic products (including Nike, Air Jordan, Puma, Timberland, Adidas) and a sophisticated customer service system, Sneakerhead.com has one of the best reputations among online sneaker retailers. We're proud to be a Yahoo! 5-star rated merchant and a member of the Better Business Bureau. We always strive to make your online shopping experience the best it can be. Check out some of our customer reviews, and thank you for choosing Sneakerhead.com</p>
         </div>
         <div class="address">
             <div class="col-md-4 address-grids">
                 <h4>Address :</h4>
                 <ul>
                     <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                    <p> Eiusmod Tempor inc<br>
-                        St Dolore Place,<br>
-                        Kingsport 56777
+                    <p>	ECNU<br>
+                        Dorm Five,<br>
+                        321A 313B
                     </p>
                 </ul>
             </div>
             <div class="col-md-4 address-grids">
                 <h4>Contact no :</h4>
-                <p><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>+2 800 544 6035</p>
-                <p><span class="glyphicon glyphicon-print" aria-hidden="true"></span>+2 100 889 9466</p>
+                <p><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>+139 1710 0342</p>
+                <p><span class="glyphicon glyphicon-print" aria-hidden="true"></span>+138 1923 0023</p>
             </div>
             <div class="col-md-4 address-grids">
                 <h4>Email :</h4>
-                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a
-                        href="mailto:example@mail.com">mail@example.com</a></p>
+                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:1072265002@qq.com">1072265002@qq.com</a></p>
             </div>
-            <div class="clearfix"></div>
+            <div class="clearfix"> </div>
         </div>
         <div class="contact-form">
             <h4>Contact form</h4>
-            <form>
-                <input type="text" value="Name" onfocus="this.value = '';"
-                       onblur="if (this.value == '') {this.value = 'Name';}" required="">
-                <input type="text" value="Email" onfocus="this.value = '';"
-                       onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                <input type="text" value="Telephone" onfocus="this.value = '';"
-                       onblur="if (this.value == '') {this.value = 'Telephone';}" required="">
-                <textarea type="text" onfocus="this.value = '';"
-                          onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-                <button class="btn1">Submit</button>
+            <form id="Mail">
+                <input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="" style="width: 500px; margin-right: 110px;">
+                <input type="text" id="address" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="" style="width: 500px;">
+                <textarea type="text" id="context" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+                <button class="btn1" onclick="SendMail()" style="right: 100px;">Send</button>
             </form>
         </div>
     </div>

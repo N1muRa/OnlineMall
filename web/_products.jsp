@@ -45,6 +45,7 @@
             com.setNumber(Integer.parseInt(resultSet.getString("Co_Number")));
             com.setBrand(brand);
             com.setImage(resultSet.getString("Co_Img"));
+            com.setType(resultSet.getString("Co_Type"));
 
             coms.add(com);
         }
